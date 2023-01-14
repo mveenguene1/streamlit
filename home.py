@@ -9,7 +9,7 @@ import requests
 
 
 
-
+st.title("Application de prévision météorologique")
 st.text_input("Entrez votre ville", key="name")
 # You can access the value at any point with:
 city_name = st.session_state.name
@@ -96,30 +96,12 @@ add_selectbox = st.sidebar.selectbox(
 # Add a selectbox to the sidebar:
 add_selectbox = st.sidebar.selectbox(
     'How would you like to be contacted?',
-    ('Email', 'Home phone', 'Mobile phone')
+    ('current_time', 'dayly_time')
 )
 
 
-#calendrier
-if add_selectbox == 'Dayly_time':
-    add_selectbox = st.sidebar.date_input(
-    "When\'s your birthday",
-    datetime.date(2019, 7, 6))
-   
 
-
-if add_selectbox == 'Dayly_time':
-    add_selectbox = st.sidebar.selectbox(
-    'Veuillez sélectionner une période de la journée:',
-    ('Matin', 'après midi','soir')
-)
-
-if add_selectbox == 'Dayly_time':
-    add_selectbox = st.sidebar.selectbox(
-    'Veuillez sélectionner une période de la journée:',
-    ('Matin', 'après midi','soir')
-)
-
+ 
 
 col1, col2, col3, col4 = st.columns(4, gap="small")
 
