@@ -67,25 +67,9 @@ with col1:
 
    st.image(image, caption='')
 with col2:
-   st.header("Température")
+   st.header("Température en degré celcius")
    st.write('' +str(current_temperature) + '°C')
  
-
-import streamlit as st
-
-# Add a selectbox to the sidebar:
-add_selectbox = st.sidebar.selectbox(
-    'How would you like to be contacted?',
-    ('Current_time', 'Dayly_time')
-)
-
-
-
-
-# Add a selectbox to the sidebar:
-add_selectbox = st.sidebar.selectbox(
-    d = st.sidebar.date_input('current_time', 'Dayly_time')
-)
 
 
 # Add a selectbox to the sidebar:
