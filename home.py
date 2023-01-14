@@ -44,7 +44,10 @@ try:
                 weather_description = z[0]["description"]
                 a = x["wind"]
                 current_vent= a["speed"]
-                
+                c = x["coord"]
+                lattitude = c["lat"]
+                longitude = c["lon"]
+
 
                 
                 #st.write('' +str(current_pression))
