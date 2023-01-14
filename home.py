@@ -70,20 +70,39 @@ with col2:
    st.header("Température")
    st.write('' +str(current_temperature) + '°C')
  
-   
+
+import streamlit as st
+
+# Add a selectbox to the sidebar:
+add_selectbox = st.sidebar.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone')
+)
+
+# Add a slider to the sidebar:
+add_slider = st.sidebar.slider(
+    'Select a range of values',
+    0.0, 100.0, (25.0, 75.0)
+)
 
 
 
 # Add a selectbox to the sidebar:
 add_selectbox = st.sidebar.selectbox(
-    '',
-    ('current_time', 'Dayly_time')
+    d = st.sidebar.date_input('current_time', 'Dayly_time')
+)
+
+
+# Add a selectbox to the sidebar:
+add_selectbox = st.sidebar.selectbox(
+    'How would you like to be contacted?',
+    ('Email', 'Home phone', 'Mobile phone')
 )
 
 
 #calendrier
 if add_selectbox == 'Dayly_time':
-    d = st.sidebar.date_input(
+    add_selectbox = st.sidebar.date_input(
     "When\'s your birthday",
     datetime.date(2019, 7, 6))
    
