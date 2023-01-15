@@ -83,7 +83,7 @@ add_selectbox = st.sidebar.selectbox(
 
 if add_selectbox== 'dayly_time':
 
-    url_forecast = "http://api.openweathermap.org/data/2.5/forecast?q="+city_name+"&APPID=beb97c1ce62559bba4e81e28de8be095"
+    url_forecast = "http://api.openweathermap.org/data/2.5/forecast?q="+city_name+"&lang=fr"+"&APPID=beb97c1ce62559bba4e81e28de8be095"
     r_forecast = requests.get(url_forecast)
     data = r_forecast.json()
     #print(data)
