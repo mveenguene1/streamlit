@@ -8,29 +8,30 @@ import requests
 
 
 
-#Titre de l'application
-st.title("Application de prévisions météorologiques")
-st.text_input("Entrez votre ville", key="name")     #recuperation du nom de la ville
-city_name = st.session_state.name       #on affecte la ville à lq variable city
 
+st.title("Application de prévision météorologique")
+st.text_input("Entrez votre ville", key="name")
+# You can access the value at any point with:
+city_name = st.session_state.name
+from datetime import datetime
 
 # datetime object containing current date and time
 if city_name:
     st.header("Météo Actuelle")
     now = datetime.now()
 # dd/mm/YY H:M:S
-    dt_string = now.strftime("%H:%M:%S")    # affichage de l'heure courante
+    dt_string = now.strftime("%H:%M:%S")
     st.write('Heure :' +dt_string)
 
 
 #Paramètre d'acces à l'API Openweathermap
-api_key = "d850f7f52bf19300a9eb4b0aa6b80f0d"  # clé secrète d'access à l'API openWearhermap
-base_url = "http://api.openweathermap.org/data/2.5/weather?" # lien d'accès au service de l'API
+api_key = "d850f7f52bf19300a9eb4b0aa6b80f0d"  # Enter the API key you got from the OpenWeatherMap website
+base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 #city_name = city
 complete_url = base_url + "appid=" + 'd850f7f52bf19300a9eb4b0aa6b80f0d' + "&q=" + city_name +"&lang=fr" # This is to complete the base_url, you can also do this manually to checkout other weather data available
-response = requests.get(complete_url)   # Récupération de la réponse de l'API
-x = response.json()   #reception de la réponse Json du serveur API  # Conversion de la réponse sous format jSON
+response = requests.get(complete_url)
+x = response.json()   #reception de la réponse Json du serveur API
 try:
         if x["cod"] != "404":
                 y = x["main"]
@@ -76,7 +77,7 @@ with col2:
 
 # Add a selectbox to the sidebar:
 add_selectbox = st.sidebar.selectbox(
-    'selectionnez un mode',
+    'How would you like to be contacted?',
     ('current_time', 'dayly_time')
 )
 
@@ -87,7 +88,7 @@ if add_selectbox== 'dayly_time':
     data = r_forecast.json()
     #print(data)
      
-# recupère et affiche les informations météorologiques données par l'API
+
 col1, col2, col3, col4 = st.columns(4, gap="small")
 
 with col1:
@@ -104,7 +105,7 @@ with col2:
    try:
     st.write('' +str(current_humidity))
     if add_selectbox =='dayly_time':
-        for i in range (0,4):
+        for i in range (0,5):
             data['list'][i]['main']['humidity']
    except Exception as e:
     print(e)
