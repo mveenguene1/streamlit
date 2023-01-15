@@ -68,8 +68,11 @@ with col1:
    st.image(image, caption='')
 with col2:
    st.header("Température en degré celcius")
-   st.write('' +str(current_temperature) + '°C')
- 
+   try:
+    st.write('' +str(current_temperature) + '°C')
+   except Exception as e:
+    print(e)
+     
 
 
 # Add a selectbox to the sidebar:
@@ -84,20 +87,33 @@ add_selectbox = st.sidebar.selectbox(
 
 col1, col2, col3, col4 = st.columns(4, gap="small")
 
+
 with col1:
    st.header("Vent")
-   st.write('' +str(current_vent) )
+   try:
+    st.write('' +str(current_vent) )
+   except Exception as e:
+    print(e)
 with col2:
    st.header("Humidté")
-   st.write('' +str(current_humidity))
+   try:
+    st.write('' +str(current_humidity))
+   except Exception as e:
+    print(e)
 
 with col3:
    st.header("Description")
-   st.write('' +str(weather_description))
+   try:
+    st.write('' +str(weather_description))
+   except Exception as e:
+    print(e)
 
 with col4:
    st.header("Pression")
-   st.write('' +str(current_pression))
+   try:
+    st.write('' +str(current_pression))
+   except Exception as e:
+    print(e)
 
    
 
