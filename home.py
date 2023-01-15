@@ -77,7 +77,7 @@ with col2:
 
 # Add a selectbox to the sidebar:
 add_selectbox = st.sidebar.selectbox(
-    'How would you like to be contacted?',
+    'selectionnez un mode',
     ('current_time', 'dayly_time')
 )
 
