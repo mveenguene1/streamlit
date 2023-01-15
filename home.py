@@ -81,23 +81,32 @@ add_selectbox = st.sidebar.selectbox(
     ('current_time', 'dayly_time')
 )
 
+if add_selectbox== 'dayly_time':
 
-
- 
+    url_forecast = "http://api.openweathermap.org/data/2.5/forecast?q="+city_name+"&APPID=beb97c1ce62559bba4e81e28de8be095"
+    r_forecast = requests.get(url_forecast)
+    data = r_forecast.json()
+    #print(data)
+     
 
 col1, col2, col3, col4 = st.columns(4, gap="small")
-
 
 with col1:
    st.header("Vent")
    try:
     st.write('' +str(current_vent) )
+    if add_selectbox =='dayly_time':
+        for i in range (0,5):
+            st.write(data['list'][i]['wind']['speed'])
    except Exception as e:
     print(e)
 with col2:
    st.header("Humidté")
    try:
     st.write('' +str(current_humidity))
+    if add_selectbox =='dayly_time':
+        for i in range (0,5):
+            data['list'][i]['main']['humidity']
    except Exception as e:
     print(e)
 
@@ -105,6 +114,9 @@ with col3:
    st.header("Description")
    try:
     st.write('' +str(weather_description))
+    if add_selectbox =='dayly_time':
+        for i in range (0,5):
+            st.write(data['list'][i]['weather'][0]['description'])
    except Exception as e:
     print(e)
 
@@ -112,6 +124,9 @@ with col4:
    st.header("Pression")
    try:
     st.write('' +str(current_pression))
+    if add_selectbox =='dayly_time':
+        for i in range (0,5):
+            st.write(data['list'][i]['main']['pressure'])
    except Exception as e:
     print(e)
 
